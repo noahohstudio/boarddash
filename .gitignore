@@ -1,0 +1,11 @@
+# This repo is public. Everything below stays on Noah's machine and is never pushed:
+# the desk (local only, by its own rules), the brainstorm recordings' transcripts and research,
+# and the working notes for Claude sessions.
+desk/
+research/
+transcripts.md
+HANDOFF.md
+CLAUDE.md
+.claude/
+
+.DS_Store

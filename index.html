@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>boarddash</title>
+<meta name="description" content="A visualizer for your AI agents. In progress.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500&display=swap">
+<style>
+/* A placeholder while the idea is still being brainstormed (Noah, Nov 9: "no prototypes at all"). The auras nod to
+   the look settled on Nov 9: "colorful auras to almost color code and map down what agents are working on". */
+:root {
+  --ground: #ffffff;
+  --ink: #0a0a0a;
+  --muted: #737373;
+  --aura-opacity: 0.5;
+}
+@media (prefers-color-scheme: dark) {
+  :root { --ground: #0a0a0a; --ink: #fafafa; --muted: #a3a3a3; --aura-opacity: 0.35; }
+}
+* { box-sizing: border-box; margin: 0; }
+html, body { height: 100%; }
+body {
+  background: var(--ground);
+  color: var(--ink);
+  font: 400 15px/1.5 Geist, system-ui, -apple-system, sans-serif;
+  display: grid;
+  place-items: center;
+  padding: 24px 16px;
+  overflow: hidden;
+}
+.aura { position: fixed; inset: 0; pointer-events: none; }
+.aura span {
+  position: absolute;
+  width: 46vmax;
+  height: 46vmax;
+  border-radius: 50%;
+  filter: blur(70px);
+  opacity: var(--aura-opacity);
+}
+.aura span:nth-child(1) { background: #f0997b; left: 8%; top: 12%; }
+.aura span:nth-child(2) { background: #5dcaa5; right: 6%; top: 28%; }
+.aura span:nth-child(3) { background: #afa9ec; left: 30%; bottom: 2%; }
+@media (prefers-reduced-motion: no-preference) {
+  .aura span { animation: drift 18s ease-in-out infinite alternate; }
+  .aura span:nth-child(2) { animation-duration: 22s; animation-delay: -6s; }
+  .aura span:nth-child(3) { animation-duration: 26s; animation-delay: -12s; }
+}
+@keyframes drift {
+  from { transform: translate(-3vmax, -2vmax) scale(1); }
+  to   { transform: translate(3vmax, 2vmax) scale(1.08); }
+}
+main { position: relative; text-align: center; max-width: 34ch; }
+h1 { font-size: 16px; font-weight: 500; letter-spacing: -0.01em; }
+p { color: var(--muted); }
+</style>
+</head>
+<body>
+<div class="aura" aria-hidden="true"><span></span><span></span><span></span></div>
+<main>
+  <h1>boarddash</h1>
+  <p>A visualizer for your AI agents.</p>
+  <p>In progress.</p>
+</main>
+</body>
+</html>
